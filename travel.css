@@ -1,0 +1,537 @@
+/* ==========================================================
+   travel.css — From-Scratch Stylesheet
+   Cambria Petty | Travel Passion Page
+   ========================================================== */
+
+/* ── 1. Global Reset & Body ── */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #f5f0e8;
+    color: #1a2030;
+    margin: 0;
+    padding: 0;
+    line-height: 1.75;
+}
+
+/* ── 2. Headings — font family ── */
+h1, h2, h3, h4, h5 {
+    font-family: 'Playfair Display', serif;
+    color: #0c1a26;
+}
+
+/* ── 3. Sticky Navigation ── */
+.site-nav {
+    background-color: #0c1a26;
+    border-bottom: 2px solid #c4963a;
+    padding: 14px 0;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 3px 16px rgba(0, 0, 0, 0.35);
+}
+
+.nav-inner {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #c4963a;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-links a {
+    font-family: 'Lato', sans-serif;
+    color: rgba(255, 255, 255, 0.82);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 4px;
+    transition: all 0.25s;
+}
+
+.nav-links a:hover {
+    color: #c4963a;
+    background-color: rgba(196, 150, 58, 0.1);
+}
+
+.nav-links a.nav-active {
+    color: #c4963a;
+}
+
+.nav-links a.nav-app-link {
+    background-color: #0d6e7a;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 7px 18px;
+    font-weight: 700;
+}
+
+.nav-links a.nav-app-link:hover {
+    background-color: #1a8a9a;
+    color: #ffffff;
+}
+
+/* ── 4. Hero Container (div #1) — custom background image ── */
+.hero-container {
+    background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&auto=format&fit=crop&q=85');
+    background-size: cover;
+    background-position: center top;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(170deg,
+        rgba(12, 26, 38, 0.80) 0%,
+        rgba(21, 43, 62, 0.70) 50%,
+        rgba(13, 110, 122, 0.55) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 40px 28px;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.hero-eyebrow {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c4963a;
+    margin-bottom: 14px;
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-shadow: 0 3px 20px rgba(0, 0, 0, 0.4);
+    margin-bottom: 14px;
+    line-height: 1.1;
+}
+
+.hero-divider {
+    width: 55px;
+    height: 3px;
+    background: #c4963a;
+    margin: 18px auto 20px;
+}
+
+.hero-sub {
+    font-family: 'Lato', sans-serif;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.82);
+    margin-bottom: 34px;
+    letter-spacing: 0.5px;
+}
+
+.hero-btn {
+    display: inline-block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin: 6px 8px;
+    transition: all 0.3s;
+}
+
+.hero-btn.solid {
+    background-color: #c4963a;
+    color: #0c1a26;
+}
+
+.hero-btn.solid:hover {
+    background-color: #d4ad5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 150, 58, 0.4);
+}
+
+.hero-btn.outline {
+    background-color: transparent;
+    border: 2px solid rgba(196, 150, 58, 0.65);
+    color: #c4963a;
+}
+
+.hero-btn.outline:hover {
+    background-color: rgba(196, 150, 58, 0.12);
+}
+
+/* ── 5. Content Sections (div #2) ── */
+.content-section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 80px 28px;
+}
+
+.section-label {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c4963a;
+    margin-bottom: 8px;
+}
+
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    color: #0c1a26;
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+.heading-bar {
+    width: 50px;
+    height: 3px;
+    background: #0d6e7a;
+    margin: 14px 0 28px;
+}
+
+.intro-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 1rem;
+    color: #3a4455;
+    line-height: 1.9;
+    max-width: 760px;
+}
+
+/* ── 6. Destinations List — ordered + nested unordered ── */
+.destinations-ordered {
+    list-style: decimal;
+    padding-left: 24px;
+    margin-top: 10px;
+    counter-reset: dest-counter;
+}
+
+.destinations-ordered > li {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #0c1a26;
+    margin-bottom: 26px;
+    line-height: 1.4;
+    padding-left: 6px;
+}
+
+.destinations-ordered > li .dest-subtitle {
+    display: block;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 400;
+    font-style: italic;
+    color: #0d6e7a;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+/* Nested unordered list inside ordered list */
+.highlights-list {
+    list-style: none;
+    padding-left: 4px;
+    margin-top: 8px;
+}
+
+.highlights-list li {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #4a5568;
+    margin-bottom: 6px;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.55;
+}
+
+.highlights-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c4963a;
+    flex-shrink: 0;
+}
+
+/* ── 7. Gallery ── */
+.gallery-section {
+    background-color: #ffffff;
+    padding: 80px 28px;
+}
+
+.gallery-inner {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 3px;
+    box-shadow: 0 4px 18px rgba(12, 26, 38, 0.14);
+    transition: transform 0.35s, box-shadow 0.35s;
+    display: block;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 32px rgba(12, 26, 38, 0.22);
+}
+
+/* ── 8. Video Section (div #3) ── */
+.video-section {
+    background: linear-gradient(150deg, #0c1a26 0%, #152b3e 50%, #1e3a52 100%);
+    padding: 90px 28px;
+    text-align: center;
+    border-top: 3px solid #c4963a;
+    border-bottom: 3px solid #c4963a;
+}
+
+.video-inner {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.video-section .section-heading {
+    color: #ffffff;
+}
+
+.video-section .section-label {
+    color: #c4963a;
+}
+
+.video-section .video-desc {
+    font-family: 'Lato', sans-serif;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+}
+
+.video-section iframe {
+    width: 100%;
+    height: 480px;
+    border-radius: 4px;
+    border: 2px solid rgba(196, 150, 58, 0.3);
+    box-shadow: 0 16px 56px rgba(0, 0, 0, 0.5);
+}
+
+/* ── 9. Tableau Section (div #4) ── */
+.tableau-section {
+    background-color: #faf8f4;
+    padding: 90px 28px;
+    text-align: center;
+}
+
+.tableau-inner {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.tableau-desc {
+    font-family: 'Lato', sans-serif;
+    color: #4a5568;
+    font-size: 0.95rem;
+    max-width: 660px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+}
+
+.tableau-wrapper {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow: 0 4px 28px rgba(12, 26, 38, 0.1);
+    border: 1px solid #e8e4dc;
+    overflow: hidden;
+}
+
+/* ── 10. Tips Section (div #5) ── */
+.tips-section {
+    background-color: #f5f0e8;
+    padding: 90px 28px;
+}
+
+.tips-inner {
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    margin-top: 36px;
+}
+
+.tip-card {
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 30px 22px;
+    text-align: center;
+    box-shadow: 0 3px 16px rgba(12, 26, 38, 0.07);
+    border-bottom: 3px solid #c4963a;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tip-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(12, 26, 38, 0.12);
+}
+
+.tip-icon {
+    font-size: 1.9rem;
+    color: #0d6e7a;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.tip-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: #0c1a26;
+    margin-bottom: 8px;
+}
+
+.tip-card p {
+    font-family: 'Lato', sans-serif;
+    color: #6b7a8d;
+    font-size: 0.86rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ── 11. Footer ── */
+.site-footer {
+    background-color: #0c1a26;
+    border-top: 2px solid #c4963a;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 56px 28px 36px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+
+.footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #c4963a;
+    margin-bottom: 4px;
+}
+
+.footer-sub {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    font-family: 'Lato', sans-serif;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #c4963a;
+}
+
+.footer-copy {
+    font-size: 0.76rem;
+    color: rgba(255, 255, 255, 0.25);
+    margin: 0;
+}
+
+.btn-back-top {
+    display: inline-block;
+    margin-top: 26px;
+    background: transparent;
+    border: 1px solid rgba(196, 150, 58, 0.45);
+    color: #c4963a;
+    border-radius: 3px;
+    padding: 10px 28px;
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+}
+
+.btn-back-top:hover {
+    background-color: #c4963a;
+    color: #0c1a26;
+}
+
+/* ── 12. Responsive ── */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.6rem; letter-spacing: 2px; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; }
+    .video-section iframe { height: 280px; }
+    .section-heading { font-size: 1.8rem; }
+}
+
+@media (max-width: 520px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .nav-links a { font-size: 0.76rem; padding: 6px 10px; }
+    .hero-content h1 { font-size: 2rem; }
+}

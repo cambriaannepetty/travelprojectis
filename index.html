@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambria Petty | Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --midnight: #0c1a26;
+      --navy:     #152b3e;
+      --slate:    #1e3a52;
+      --teal:     #0d6e7a;
+      --teal-lt:  #1a8a9a;
+      --gold:     #c4963a;
+      --gold-lt:  #d4ad5a;
+      --coral:    #b85c38;
+      --cream:    #f5f0e8;
+      --offwhite: #faf8f4;
+      --muted:    #6b7a8d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background-color: var(--cream);
+      color: #1a2030;
+    }
+
+    h1, h2, h3, h4, h5 { font-family: 'Playfair Display', serif; }
+
+    /* ── Navbar ── */
+    .navbar {
+      background-color: var(--midnight) !important;
+      border-bottom: 2px solid var(--gold);
+      padding: 14px 0;
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--gold) !important;
+      letter-spacing: 1px;
+    }
+    .nav-link {
+      color: rgba(255,255,255,.82) !important;
+      font-family: 'Lato', sans-serif;
+      font-size: .88rem;
+      letter-spacing: .6px;
+      text-transform: uppercase;
+      padding: 6px 14px !important;
+      border-radius: 4px;
+      transition: all .25s;
+    }
+    .nav-link:hover  { color: var(--gold) !important; background: rgba(196,150,58,.1); }
+    .nav-link.active { color: var(--gold) !important; }
+    .nav-link.nav-cta {
+      background: var(--teal);
+      color: #fff !important;
+      border-radius: 20px;
+      padding: 6px 18px !important;
+    }
+    .nav-link.nav-cta:hover { background: var(--teal-lt); }
+
+    /* ── Hero ── */
+    .hero-section {
+      background: linear-gradient(160deg, var(--midnight) 0%, var(--navy) 45%, var(--slate) 75%, var(--teal) 100%);
+      color: #fff;
+      padding: 140px 0 110px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(196,150,58,0.08)'/%3E%3C/svg%3E") repeat;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-mountains {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: .78rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero-divider {
+      width: 60px; height: 3px;
+      background: var(--gold);
+      margin: 20px auto;
+    }
+    .hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.75);
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--midnight);
+      border: none;
+      border-radius: 3px;
+      padding: 14px 38px;
+      font-family: 'Lato', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .3s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); color: var(--midnight); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,150,58,.35); }
+    .btn-outline-gold {
+      background: transparent;
+      border: 2px solid rgba(196,150,58,.6);
+      color: var(--gold);
+      border-radius: 3px;
+      padding: 12px 36px;
+      font-family: 'Lato', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .3s;
+    }
+    .btn-outline-gold:hover { background: rgba(196,150,58,.15); color: var(--gold); }
+
+    /* Wave */
+    .wave-wrap { line-height: 0; display: block; }
+
+    /* ── About ── */
+    .about-section { padding: 100px 0; background: var(--offwhite); }
+    .section-label {
+      font-family: 'Lato', sans-serif;
+      font-size: .72rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: var(--midnight);
+      margin-bottom: 0;
+      line-height: 1.2;
+    }
+    .title-bar {
+      width: 50px; height: 3px;
+      background: var(--teal);
+      margin: 16px 0 28px;
+    }
+    .about-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 40px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 4px 30px rgba(12,26,38,.08);
+    }
+    .about-card p {
+      font-size: 1rem;
+      color: #3a4455;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .about-card p:last-of-type { margin-bottom: 28px; }
+
+    /* ── Stat Cards ── */
+    .stat-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 30px 20px;
+      text-align: center;
+      border-top: 3px solid var(--teal);
+      box-shadow: 0 4px 20px rgba(12,26,38,.07);
+      transition: transform .3s, box-shadow .3s;
+      height: 100%;
+    }
+    .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 34px rgba(12,26,38,.14); }
+    .stat-icon { font-size: 2rem; color: var(--teal); margin-bottom: 12px; }
+    .stat-card h6 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--midnight); margin-bottom: 6px; }
+    .stat-card p { font-size: .82rem; color: var(--muted); margin: 0; line-height: 1.5; }
+
+    /* ── Qualities ── */
+    .qualities-section { padding: 100px 0; background: var(--cream); }
+    .quality-card {
+      background: #fff;
+      border-radius: 4px;
+      padding: 36px 28px;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 4px 20px rgba(12,26,38,.07);
+      transition: transform .3s;
+      height: 100%;
+    }
+    .quality-card:hover { transform: translateY(-5px); }
+    .q-icon { font-size: 2.2rem; color: var(--gold); margin-bottom: 16px; }
+    .quality-card h5 { font-family: 'Playfair Display', serif; color: var(--midnight); margin-bottom: 10px; font-size: 1.15rem; }
+    .quality-card p { font-size: .9rem; color: #4a5568; line-height: 1.8; margin: 0; }
+
+    /* ── Dark Banner ── */
+    .dark-banner {
+      background: linear-gradient(135deg, var(--midnight) 0%, var(--navy) 50%, var(--slate) 100%);
+      padding: 90px 0;
+      color: #fff;
+    }
+    .banner-stat { text-align: center; padding: 20px; }
+    .banner-icon { font-size: 2.4rem; color: var(--gold); margin-bottom: 14px; }
+    .banner-stat h5 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #fff; margin-bottom: 6px; }
+    .banner-stat p { font-size: .85rem; color: rgba(255,255,255,.6); margin: 0; }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--midnight);
+      border-top: 2px solid var(--gold);
+      color: rgba(255,255,255,.7);
+      padding: 56px 0 36px;
+      text-align: center;
+    }
+    footer .footer-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 6px; }
+    footer .footer-sub { font-size: .82rem; color: rgba(255,255,255,.4); letter-spacing: 1px; margin-bottom: 24px; }
+    .social-link {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid rgba(196,150,58,.4);
+      color: var(--gold); font-size: 1rem;
+      margin: 0 6px; text-decoration: none;
+      transition: all .3s;
+    }
+    .social-link:hover { background: var(--gold); color: var(--midnight); border-color: var(--gold); }
+    .btn-top {
+      display: inline-block; margin-top: 28px;
+      background: transparent; border: 1px solid rgba(196,150,58,.5);
+      color: var(--gold); border-radius: 3px;
+      padding: 10px 28px; text-decoration: none;
+      font-family: 'Lato', sans-serif; font-size: .82rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      transition: all .3s;
+    }
+    .btn-top:hover { background: var(--gold); color: var(--midnight); }
+  </style>
+</head>
+<body id="top">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">Cambria Petty</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="travel.html">Travel Passion</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="travel-app.html">Travel Advisor App</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero-section">
+
+  <!-- Mountain silhouette outline — three layered ranges behind the title -->
+  <svg class="hero-mountains" viewBox="0 0 1440 600" xmlns="http://www.w3.org/2000/svg"
+       preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- Far range — faintest, tallest peaks -->
+    <path d="M0,490 L80,445 L155,462 L240,385 L315,415 L400,335
+             L475,365 L560,295 L635,325 L715,268 L790,298 L865,278
+             L945,308 L1020,285 L1100,315 L1180,292 L1260,325
+             L1345,305 L1440,330"
+          fill="none"
+          stroke="rgba(196,150,58,0.13)"
+          stroke-width="1.5"
+          stroke-linejoin="round"/>
+    <!-- Mid range — medium visibility -->
+    <path d="M0,538 L100,495 L185,514 L285,438 L375,468 L475,390
+             L570,422 L675,358 L770,392 L870,328 L965,362 L1065,336
+             L1165,368 L1270,340 L1375,372 L1440,390"
+          fill="none"
+          stroke="rgba(255,255,255,0.10)"
+          stroke-width="2"
+          stroke-linejoin="round"/>
+    <!-- Near range — most prominent, subtle gold fill for depth -->
+    <path d="M0,572 L110,530 L205,550 L315,472 L415,506 L528,432
+             L640,465 L758,398 L860,434 L978,372 L1082,408 L1200,378
+             L1330,412 L1440,392 L1440,600 L0,600 Z"
+          fill="rgba(196,150,58,0.045)"
+          stroke="rgba(196,150,58,0.22)"
+          stroke-width="2.5"
+          stroke-linejoin="round"/>
+  </svg>
+
+  <div class="container hero-inner">
+    <p class="hero-eyebrow">Welcome to my portfolio</p>
+    <h1>Cambria Petty</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Accounting Student &nbsp;&middot;&nbsp; BYU Marriott School of Business &nbsp;&middot;&nbsp; Future CPA</p>
+    <a href="resume.html" class="btn-gold me-3">View Resume</a>
+    <a href="#about" class="btn-outline-gold">Learn More</a>
+  </div>
+</section>
+
+<!-- Wave -->
+<svg class="wave-wrap" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" style="background:var(--teal);">
+  <path d="M0,30 C360,58 1080,4 1440,30 L1440,60 L0,60 Z" fill="var(--offwhite)"/>
+</svg>
+
+<!-- ═══ ABOUT ═══ -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-6">
+        <p class="section-label">Who I Am</p>
+        <h2 class="section-title">About Me</h2>
+        <div class="title-bar"></div>
+        <div class="about-card">
+          <p>Hi, I'm <strong>Cambria Petty</strong> — an accounting student at Brigham Young University's Marriott School of Business with a deep passion for finance, leadership, and community service.</p>
+          <p>Originally from Simi Valley, California, I bring dedication and a proven work ethic to everything I pursue — from academic honors and varsity athletics to meaningful service in my community.</p>
+          <p>I believe that success is most meaningful when it lifts others. Whether tutoring peers, mentoring middle schoolers, or building welcome kits for immigrants, I lead with purpose and heart.</p>
+          <a href="resume.html" class="btn-gold">View My Resume</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+              <h6>Education</h6>
+              <p>BYU Marriott School of Business, Accounting — Class of 2029</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-award"></i></div>
+              <h6>Honors</h6>
+              <p>AP Scholar with Distinction, National Honor Society, Ronald Reagan Scholar</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-handshake"></i></div>
+              <h6>Service</h6>
+              <p>Friday Night Live Mentor, Civic Engagement Award recipient</p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="stat-card">
+              <div class="stat-icon"><i class="fas fa-person-running"></i></div>
+              <h6>Athletics</h6>
+              <p>4-Year Scholar Athlete Award — academics and sports in balance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ QUALITIES ═══ -->
+<section class="qualities-section">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="section-label">Core Strengths</p>
+      <h2 class="section-title">What Drives Me</h2>
+      <div class="title-bar mx-auto"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="quality-card">
+          <div class="q-icon"><i class="fas fa-calculator"></i></div>
+          <h5>Accounting Excellence</h5>
+          <p>Pursuing mastery in accounting and finance with a clear goal: becoming a CPA who contributes meaningfully to business and society.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quality-card">
+          <div class="q-icon"><i class="fas fa-users"></i></div>
+          <h5>Community Impact</h5>
+          <p>From immigrant welcome kits to middle school mentorship, I use my skills as a tool for service — not just personal advancement.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="quality-card">
+          <div class="q-icon"><i class="fas fa-trophy"></i></div>
+          <h5>Athletic Dedication</h5>
+          <p>Four-year Scholar Athlete. I bring the same discipline, resilience, and competitive drive to the classroom and boardroom.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DARK BANNER ═══ -->
+<section class="dark-banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"><div class="banner-stat"><div class="banner-icon"><i class="fas fa-book-open"></i></div><h5>Academic Excellence</h5><p>Maintaining a high GPA across all pursuits</p></div></div>
+      <div class="col-md-3"><div class="banner-stat"><div class="banner-icon"><i class="fas fa-heart"></i></div><h5>Service-Oriented</h5><p>Committed to giving back to my community</p></div></div>
+      <div class="col-md-3"><div class="banner-stat"><div class="banner-icon"><i class="fas fa-star"></i></div><h5>Leadership</h5><p>Guiding peers and making a positive impact</p></div></div>
+      <div class="col-md-3"><div class="banner-stat"><div class="banner-icon"><i class="fas fa-sun"></i></div><h5>Optimism</h5><p>Approaching every challenge with a bright spirit</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <p class="footer-name">Cambria Petty</p>
+    <p class="footer-sub">Accounting Student &nbsp;&bull;&nbsp; BYU Marriott School of Business</p>
+    <div class="mb-4">
+      <a href="https://www.linkedin.com/in/cambria-petty-873559394" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:cpetty1@byu.edu" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="mb-3" style="font-size:.82rem; color:rgba(255,255,255,.35);">
+      <a href="index.html" style="color:rgba(255,255,255,.45);text-decoration:none;margin:0 10px;">Home</a>
+      <a href="resume.html" style="color:rgba(255,255,255,.45);text-decoration:none;margin:0 10px;">Resume</a>
+      <a href="travel.html" style="color:rgba(255,255,255,.45);text-decoration:none;margin:0 10px;">Travel Passion</a>
+      <a href="travel-app.html" style="color:rgba(255,255,255,.45);text-decoration:none;margin:0 10px;">Travel App</a>
+    </div>
+    <p style="font-size:.78rem;color:rgba(255,255,255,.28);margin:0;">&copy; 2025 Cambria Petty &nbsp;&bull;&nbsp; cpetty1@byu.edu</p>
+    <a href="#top" class="btn-top">&#8679; Back to Top</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

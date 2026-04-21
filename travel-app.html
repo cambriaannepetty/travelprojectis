@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Advisor App | Cambria Petty</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════
+       All styles, HTML, and scripts on one page
+       ══════════════════════════════════════════ */
+    :root {
+      --midnight: #0c1a26;
+      --navy:     #152b3e;
+      --slate:    #1e3a52;
+      --teal:     #0d6e7a;
+      --teal-lt:  #1a8a9a;
+      --gold:     #c4963a;
+      --gold-lt:  #d4ad5a;
+      --coral:    #b85c38;
+      --cream:    #f5f0e8;
+      --offwhite: #faf8f4;
+      --muted:    #6b7a8d;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: linear-gradient(160deg, var(--midnight) 0%, var(--navy) 40%, var(--slate) 75%, var(--teal) 100%);
+      min-height: 100vh;
+      color: #1a2030;
+    }
+
+    h1,h2,h3,h4,h5 { font-family: 'Playfair Display', serif; }
+
+    /* ── Navbar ── */
+    .app-nav {
+      background-color: var(--midnight);
+      border-bottom: 2px solid var(--gold);
+      padding: 14px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.4);
+    }
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      font-family: 'Lato', sans-serif;
+      color: rgba(255,255,255,.82);
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      padding: 7px 13px;
+      border-radius: 4px;
+      transition: all 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); background: rgba(196,150,58,.1); }
+    .nav-links a.nav-active { color: var(--gold); }
+    .nav-links a.nav-cta {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 20px;
+      padding: 7px 18px;
+      font-weight: 700;
+    }
+    .nav-links a.nav-cta:hover { background: var(--teal-lt); color: #fff; }
+
+    /* ── App Wrapper ── */
+    .app-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 52px 20px 80px;
+    }
+
+    /* ── Screen Management ── */
+    .screen { display: none; }
+    .screen.active { display: block; }
+
+    /* ── Card Base ── */
+    .app-card {
+      background: var(--offwhite);
+      border-radius: 4px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.45);
+      border-top: 4px solid var(--gold);
+      overflow: hidden;
+    }
+    .card-body { padding: 48px 44px; }
+
+    /* ── Welcome Screen ── */
+    .welcome-icon { font-size: 3.5rem; color: var(--teal); margin-bottom: 20px; display: block; text-align: center; }
+    .welcome-title { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--midnight); text-align: center; margin-bottom: 10px; line-height: 1.2; }
+    .welcome-divider { width: 50px; height: 3px; background: var(--gold); margin: 16px auto 20px; }
+    .welcome-tagline { font-size: 1rem; color: #4a5568; text-align: center; margin-bottom: 28px; line-height: 1.8; }
+
+    .how-it-works {
+      background: #fff;
+      border: 1px solid #e8e4dc;
+      border-radius: 4px;
+      border-left: 4px solid var(--teal);
+      padding: 20px 24px;
+      margin-bottom: 34px;
+    }
+    .how-it-works h3 { font-family: 'Lato', sans-serif; font-size: .72rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 3px; margin-bottom: 14px; }
+    .how-it-works ul { list-style: none; padding: 0; }
+    .how-it-works ul li { font-size: .9rem; color: #4a5568; padding: 5px 0 5px 20px; position: relative; }
+    .how-it-works ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+
+    .btn-start {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: var(--gold);
+      color: var(--midnight);
+      border: none;
+      border-radius: 3px;
+      padding: 16px;
+      font-family: 'Lato', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .3s;
+    }
+    .btn-start:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,150,58,.35); }
+
+    /* ── Progress ── */
+    .progress-area { margin-bottom: 34px; }
+    .progress-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .progress-label { font-family: 'Lato', sans-serif; font-size: .7rem; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+    .progress-count { font-family: 'Lato', sans-serif; font-size: .82rem; color: var(--teal); font-weight: 700; }
+    .progress-track { height: 6px; background: #e0dcd4; border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); border-radius: 10px; transition: width .5s ease; }
+
+    /* ── Question ── */
+    .q-icon { font-size: 2.2rem; display: block; margin-bottom: 14px; }
+    .q-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--midnight); margin-bottom: 6px; line-height: 1.3; }
+    .q-sub { font-family: 'Lato', sans-serif; font-size: .88rem; color: var(--muted); margin-bottom: 28px; }
+
+    /* ── Options ── */
+    .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .option-btn {
+      background: #fff;
+      border: 2px solid #e0dcd4;
+      border-radius: 4px;
+      padding: 18px 16px;
+      cursor: pointer;
+      text-align: left;
+      transition: all .22s;
+      font-family: 'Lato', sans-serif;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .option-btn:hover { border-color: var(--teal); background: #f0f8f9; transform: translateY(-2px); box-shadow: 0 4px 14px rgba(13,110,122,.12); }
+    .option-btn.selected { border-color: var(--gold); background: #fffbf3; box-shadow: 0 4px 16px rgba(196,150,58,.18); }
+    .option-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
+    .option-label { font-size: .93rem; font-weight: 700; color: var(--midnight); margin-bottom: 3px; }
+    .option-desc { font-size: .78rem; color: var(--muted); line-height: 1.4; }
+
+    /* ── Nav Buttons ── */
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
+    .btn-back {
+      background: none; border: 1px solid #ccc; color: var(--muted);
+      border-radius: 3px; padding: 10px 22px;
+      font-family: 'Lato', sans-serif; font-size: .82rem; letter-spacing: 1px; text-transform: uppercase;
+      cursor: pointer; transition: all .22s;
+    }
+    .btn-back:hover { border-color: var(--teal); color: var(--teal); }
+    .btn-next {
+      background: var(--teal); color: #fff; border: none;
+      border-radius: 3px; padding: 12px 30px;
+      font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; transition: all .22s;
+      opacity: .4; pointer-events: none;
+    }
+    .btn-next.enabled { opacity: 1; pointer-events: all; }
+    .btn-next.enabled:hover { background: var(--teal-lt); transform: translateY(-2px); box-shadow: 0 5px 16px rgba(13,110,122,.3); }
+
+    /* ── Loading ── */
+    .loading-body { padding: 80px 44px; text-align: center; }
+    .spinner {
+      width: 52px; height: 52px;
+      border: 4px solid #e0dcd4;
+      border-top-color: var(--teal);
+      border-right-color: var(--gold);
+      border-radius: 50%;
+      animation: spin .85s linear infinite;
+      margin: 0 auto 24px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-body p { font-family: 'Lato', sans-serif; font-size: 1rem; color: var(--muted); }
+
+    /* ── Result ── */
+    .result-hero { position: relative; height: 290px; overflow: hidden; }
+    .result-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .result-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(12,26,38,.82) 0%, transparent 55%); }
+    .result-hero-text { position: absolute; bottom: 24px; left: 30px; right: 30px; color: #fff; }
+    .result-badge {
+      display: inline-block;
+      background: var(--gold); color: var(--midnight);
+      font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      border-radius: 2px; padding: 4px 14px; margin-bottom: 10px;
+    }
+    .result-hero-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 4px; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+    .result-tagline { font-family: 'Lato', sans-serif; font-size: .9rem; color: rgba(255,255,255,.8); }
+
+    .result-body { padding: 36px 40px 44px; }
+    .result-desc { font-family: 'Lato', sans-serif; font-size: .97rem; color: #3a4455; line-height: 1.85; margin-bottom: 26px; }
+
+    .meta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+    .meta-chip {
+      display: flex; align-items: center; gap: 8px;
+      background: #fff; border: 1px solid #e0dcd4;
+      border-radius: 3px; padding: 8px 16px;
+      font-family: 'Lato', sans-serif; font-size: .8rem; color: var(--midnight); font-weight: 700;
+    }
+    .meta-chip i { color: var(--gold); }
+
+    .highlights-label { font-family: 'Lato', sans-serif; font-size: .7rem; font-weight: 700; color: var(--teal); text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 14px; }
+    .highlights-ul { list-style: none; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .highlights-ul li { display: flex; align-items: flex-start; gap: 9px; font-family: 'Lato', sans-serif; font-size: .88rem; color: #4a5568; line-height: 1.45; }
+    .highlights-ul li i { color: var(--teal); margin-top: 3px; flex-shrink: 0; }
+
+    .result-actions {
+      display: flex; gap: 12px; flex-wrap: wrap;
+      margin-top: 32px; padding-top: 26px;
+      border-top: 1px solid #e8e4dc;
+    }
+    .btn-retake {
+      background: var(--midnight); color: var(--gold);
+      border: 1px solid rgba(196,150,58,.4);
+      border-radius: 3px; padding: 12px 28px;
+      font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      cursor: pointer; transition: all .25s; text-decoration: none; display: inline-block;
+    }
+    .btn-retake:hover { background: var(--gold); color: var(--midnight); }
+    .btn-explore {
+      background: var(--teal); color: #fff;
+      border: none; border-radius: 3px; padding: 12px 28px;
+      font-family: 'Lato', sans-serif; font-size: .82rem; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      transition: all .25s; text-decoration: none; display: inline-block;
+    }
+    .btn-explore:hover { background: var(--teal-lt); color: #fff; transform: translateY(-2px); }
+
+    /* ── App Footer ── */
+    .app-footer {
+      text-align: center; padding: 30px 20px;
+      font-family: 'Lato', sans-serif; font-size: .8rem;
+      color: rgba(255,255,255,.35);
+    }
+    .app-footer a { color: rgba(196,150,58,.7); text-decoration: none; transition: color .25s; }
+    .app-footer a:hover { color: var(--gold); }
+
+    /* ── Responsive ── */
+    @media (max-width: 560px) {
+      .card-body { padding: 30px 22px; }
+      .options-grid { grid-template-columns: 1fr; }
+      .highlights-ul { grid-template-columns: 1fr; }
+      .result-body { padding: 24px 22px 32px; }
+      .result-hero { height: 220px; }
+      .welcome-title { font-size: 1.9rem; }
+    }
+  </style>
+</head>
+<body id="top">
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="app-nav">
+  <a href="index.html" class="nav-brand">Cambria Petty</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="travel.html">Travel Passion</a>
+    <a href="travel-app.html" class="nav-cta nav-active">Travel Advisor App</a>
+  </div>
+</nav>
+
+<div class="app-wrapper">
+
+  <!-- ══════════ WELCOME ══════════ -->
+  <div class="screen active" id="screen-welcome">
+    <div class="app-card">
+      <div class="card-body">
+        <span class="welcome-icon"><i class="fas fa-compass"></i></span>
+        <h1 class="welcome-title">Where Should You Travel Next?</h1>
+        <div class="welcome-divider"></div>
+        <p class="welcome-tagline">
+          Answer 5 questions about your ideal vacation and I'll match you with the
+          perfect destination — from the Maldives to Iceland and everywhere in between.
+        </p>
+        <div class="how-it-works">
+          <h3>How It Works</h3>
+          <ul>
+            <li>Answer 5 quick questions about your travel style and preferences</li>
+            <li>Choose whichever option resonates most with you</li>
+            <li>Receive a personalized destination match with travel highlights</li>
+            <li>Discover your next great adventure!</li>
+          </ul>
+        </div>
+        <button class="btn-start" onclick="startQuiz()">
+          <i class="fas fa-plane-departure"></i> Start the Quiz
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ QUESTION ══════════ -->
+  <div class="screen" id="screen-question">
+    <div class="app-card">
+      <div class="card-body">
+
+        <div class="progress-area">
+          <div class="progress-meta">
+            <span class="progress-label">Your Journey</span>
+            <span class="progress-count" id="progress-count">Question 1 of 5</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:20%;"></div>
+          </div>
+        </div>
+
+        <span class="q-icon" id="q-icon"></span>
+        <p class="q-text" id="q-text"></p>
+        <p class="q-sub" id="q-sub"></p>
+
+        <div class="options-grid" id="options-grid"></div>
+
+        <div class="quiz-nav">
+          <button class="btn-back" id="btn-back" onclick="goBack()">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
+          <button class="btn-next" id="btn-next" onclick="goNext()">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ LOADING ══════════ -->
+  <div class="screen" id="screen-loading">
+    <div class="app-card">
+      <div class="loading-body">
+        <div class="spinner"></div>
+        <p id="loading-text">Analyzing your travel style...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ RESULT ══════════ -->
+  <div class="screen" id="screen-result">
+    <div class="app-card">
+      <div class="result-hero">
+        <img id="result-img" src="" alt="Destination">
+        <div class="result-hero-overlay"></div>
+        <div class="result-hero-text">
+          <span class="result-badge">Your Perfect Match</span>
+          <h2 id="result-name"></h2>
+          <p class="result-tagline" id="result-tagline"></p>
+        </div>
+      </div>
+      <div class="result-body">
+        <p class="result-desc" id="result-desc"></p>
+        <div class="meta-row">
+          <div class="meta-chip"><i class="fas fa-calendar-alt"></i><span id="result-time"></span></div>
+          <div class="meta-chip"><i class="fas fa-wallet"></i><span id="result-budget"></span></div>
+          <div class="meta-chip"><i class="fas fa-thermometer-half"></i><span id="result-climate"></span></div>
+        </div>
+        <p class="highlights-label"><i class="fas fa-map-pin" style="margin-right:6px;color:var(--gold);"></i>Must-Do Experiences</p>
+        <ul class="highlights-ul" id="result-highlights"></ul>
+        <div class="result-actions">
+          <button class="btn-retake" onclick="restartQuiz()"><i class="fas fa-redo-alt"></i> Retake Quiz</button>
+          <a href="travel.html" class="btn-explore"><i class="fas fa-globe-americas"></i> Explore Travel Page</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="app-footer">
+  <p>
+    Created by <strong style="color:rgba(196,150,58,.9);">Cambria Petty</strong>
+    &nbsp;&bull;&nbsp;
+    <a href="index.html">Home</a> &nbsp;&bull;&nbsp;
+    <a href="resume.html">Resume</a> &nbsp;&bull;&nbsp;
+    <a href="travel.html">Travel Passion</a>
+  </p>
+</footer>
+
+<script>
+  /* ══════════════════════════════════════
+     QUIZ DATA
+  ══════════════════════════════════════ */
+  const questions = [
+    {
+      icon: '💰',
+      text: 'What is your travel budget?',
+      sub: 'Per person, not including flights.',
+      options: [
+        { icon: '🤑', label: 'Budget-Friendly', desc: 'Under $1,500 — stretch every dollar', key: 'budget' },
+        { icon: '✈️', label: 'Moderate',         desc: '$1,500–$4,000 — comfort without excess', key: 'moderate' },
+        { icon: '💎', label: 'Luxury',            desc: '$4,000+ — spare no expense', key: 'luxury' },
+        { icon: '🌍', label: 'Flexible',          desc: 'I\'ll spend what it takes for the dream trip', key: 'flex' }
+      ]
+    },
+    {
+      icon: '🌤️',
+      text: 'What climate speaks to you?',
+      sub: 'Picture your ideal weather on vacation.',
+      options: [
+        { icon: '🌴', label: 'Tropical & Warm',     desc: 'Hot sun, ocean breezes, and humidity', key: 'tropical' },
+        { icon: '⛵', label: 'Mediterranean',         desc: 'Warm, dry, and beautifully breezy', key: 'med' },
+        { icon: '🏔️', label: 'Cool & Dramatic',      desc: 'Crisp air and wild, rugged scenery', key: 'cool' },
+        { icon: '🍂', label: 'Temperate & Lush',     desc: 'Comfortable, green, four-season variety', key: 'temp' }
+      ]
+    },
+    {
+      icon: '🎯',
+      text: 'What\'s your dream vacation vibe?',
+      sub: 'Choose what excites you most.',
+      options: [
+        { icon: '🏖️', label: 'Beach & Relaxation',  desc: 'Sun, ocean, and blissful downtime', key: 'beach' },
+        { icon: '🧗', label: 'Adventure & Outdoors', desc: 'Hiking, surfing, zip-lining, wildlife', key: 'adventure' },
+        { icon: '🏛️', label: 'Culture & History',    desc: 'Temples, art, local markets, architecture', key: 'culture' },
+        { icon: '🍜', label: 'Food & Nightlife',     desc: 'Street food, cocktail bars, rooftop scenes', key: 'food' }
+      ]
+    },
+    {
+      icon: '👥',
+      text: 'Who are you traveling with?',
+      sub: 'The right destination fits your crew.',
+      options: [
+        { icon: '🎒', label: 'Solo Explorer',      desc: 'Just me and the open road', key: 'solo' },
+        { icon: '❤️', label: 'Romantic Couple',    desc: 'A getaway built for two', key: 'couple' },
+        { icon: '👨‍👩‍👧', label: 'Family with Kids', desc: 'Fun and safe for everyone', key: 'family' },
+        { icon: '🎉', label: 'Group of Friends',   desc: 'The more the merrier', key: 'friends' }
+      ]
+    },
+    {
+      icon: '🌅',
+      text: 'Which scenery speaks to your soul?',
+      sub: 'Close your eyes — where do you picture yourself?',
+      options: [
+        { icon: '🏝️', label: 'Crystal Ocean & White Sand', desc: 'Turquoise water, reefs, endless blue sky', key: 'ocean' },
+        { icon: '🌿', label: 'Jungle & Waterfalls',         desc: 'Rainforest trails, wildlife, tropical rivers', key: 'jungle' },
+        { icon: '⛩️', label: 'Ancient Temples & Villages',  desc: 'Sacred sites, cobblestone streets, local life', key: 'temples' },
+        { icon: '🌋', label: 'Dramatic Landscapes',         desc: 'Volcanoes, glaciers, geysers, epic vistas', key: 'volcanic' }
+      ]
+    }
+  ];
+
+  /* ══════════════════════════════════════
+     DESTINATIONS
+  ══════════════════════════════════════ */
+  const destinations = [
+    {
+      name: 'Bali, Indonesia', tagline: 'The Island of the Gods',
+      description: 'Bali is a living postcard — a mesmerizing blend of lush rice paddies, ancient Hindu temples, world-class surf, and a spiritual energy unlike anywhere else on Earth. Whether you seek inner peace in Ubud, beach vibes in Seminyak, or adventure in the highlands, Bali delivers it all with warmth and color.',
+      image: 'https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=900&auto=format&fit=crop&q=85',
+      time: 'April – October', budget: 'Budget to Moderate', climate: 'Tropical & Warm',
+      highlights: ['Tegalalang Rice Terraces', 'Uluwatu Temple at Sunset', 'Surfing Kuta & Canggu', 'Ubud Arts & Markets', 'Traditional Kecak Dance', 'Balinese Cooking Classes'],
+      scores: { budget:2,moderate:2,luxury:1,flex:2, tropical:3,med:0,cool:0,temp:0, beach:2,adventure:2,culture:2,food:2, solo:2,couple:2,family:1,friends:2, ocean:1,jungle:2,temples:3,volcanic:1 }
+    },
+    {
+      name: 'The Maldives', tagline: 'Paradise on Earth',
+      description: 'The Maldives is the pinnacle of tropical luxury — a constellation of 1,200 coral islands scattered across the Indian Ocean. Think overwater bungalows with glass floors, house reefs teeming with turtles, and sunsets that make time dissolve. This is the destination for those who want nothing short of perfect.',
+      image: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=900&auto=format&fit=crop&q=85',
+      time: 'November – April', budget: 'Luxury', climate: 'Tropical & Warm',
+      highlights: ['Iconic Overwater Villas', 'Coral Reef Snorkeling', 'Bioluminescent Beaches', 'Whale Shark Encounters', 'Sandbar Picnics at Dusk', 'World-Class Diving'],
+      scores: { budget:0,moderate:0,luxury:3,flex:3, tropical:3,med:0,cool:0,temp:0, beach:3,adventure:1,culture:0,food:0, solo:0,couple:3,family:1,friends:0, ocean:3,jungle:0,temples:0,volcanic:0 }
+    },
+    {
+      name: 'Thailand', tagline: 'The Land of Smiles',
+      description: 'Thailand is the ultimate traveler\'s dream — incredible food, stunning beaches, ancient temples, and a budget that stretches further than almost anywhere. From Bangkok\'s electric street food scene to the serene beauty of Chiang Mai and the impossibly blue waters of Koh Phi Phi, Thailand delivers an unforgettable richness.',
+      image: 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=900&auto=format&fit=crop&q=85',
+      time: 'November – March', budget: 'Budget-Friendly', climate: 'Tropical & Warm',
+      highlights: ['Bangkok Street Food Scene', 'Koh Phi Phi Island Hopping', 'Chiang Mai Temples', 'Full Moon Party', 'Thai Cooking Classes', 'Floating Markets'],
+      scores: { budget:3,moderate:1,luxury:0,flex:2, tropical:3,med:0,cool:0,temp:1, beach:2,adventure:1,culture:2,food:3, solo:3,couple:1,family:1,friends:3, ocean:1,jungle:1,temples:3,volcanic:0 }
+    },
+    {
+      name: 'Hawaii, USA', tagline: 'Aloha — Spirit of the Islands',
+      description: 'Hawaii is America\'s tropical paradise — where volcanic mountains meet turquoise surf and the spirit of aloha wraps around you from the moment you land. Swim with sea turtles on the Big Island, hike the Nā Pali Coast on Kauai, or watch the sunrise from the summit of Haleakalā on Maui. There is something magical here for everyone.',
+      image: 'https://images.unsplash.com/photo-1542259009477-d625272157b7?w=900&auto=format&fit=crop&q=85',
+      time: 'April – June / Sep – Nov', budget: 'Moderate', climate: 'Tropical & Warm',
+      highlights: ['Molokini Crater Snorkeling', 'Haleakalā Volcano Sunrise', 'Nā Pali Sea Cliffs', 'Black & Green Sand Beaches', 'Sea Turtle Encounters', 'Traditional Luau'],
+      scores: { budget:1,moderate:3,luxury:1,flex:2, tropical:3,med:0,cool:1,temp:1, beach:3,adventure:2,culture:1,food:1, solo:1,couple:2,family:3,friends:1, ocean:3,jungle:2,temples:0,volcanic:2 }
+    },
+    {
+      name: 'Costa Rica', tagline: 'Pura Vida — The Pure Life',
+      description: 'Costa Rica is an adventurer\'s utopia packed into a small country. Zip-line over cloud forests in the morning, watch a volcano glow at dusk, and fall asleep to howler monkeys at night. With world-class surf, incredible wildlife, and eco-lodges in the jungle, Costa Rica is nature at its most awe-inspiring.',
+      image: 'https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?w=900&auto=format&fit=crop&q=85',
+      time: 'December – April', budget: 'Moderate', climate: 'Tropical & Warm',
+      highlights: ['Monteverde Cloud Forest Zip-line', 'Arenal Volcano & Hot Springs', 'Sloth & Toucan Spotting', 'Sea Turtle Nesting Beaches', 'Surfing Tamarindo', 'Coffee Farm Tours'],
+      scores: { budget:1,moderate:2,luxury:0,flex:2, tropical:3,med:0,cool:1,temp:1, beach:1,adventure:3,culture:1,food:1, solo:1,couple:1,family:2,friends:2, ocean:0,jungle:3,temples:0,volcanic:2 }
+    },
+    {
+      name: 'Cancun & Riviera Maya', tagline: 'Sun, Cenotes & Ancient Wonders',
+      description: 'Cancun is the all-inclusive paradise with ancient Mayan wonder on its doorstep. Lounge on powdery white beaches by day, dive into the turquoise cenotes of the Yucatán, visit the ruins of Chichén Itzá, and dance the night away. It delivers a perfect mix of relaxation, adventure, and culture at a price that won\'t break the bank.',
+      image: 'https://images.unsplash.com/photo-1512813195386-6cf811ad3542?w=900&auto=format&fit=crop&q=85',
+      time: 'December – April', budget: 'Budget to Moderate', climate: 'Tropical & Warm',
+      highlights: ['Cenote Swimming & Diving', 'All-Inclusive Beach Days', 'Chichén Itzá Day Trip', 'Isla Mujeres Snorkeling', 'Cozumel Diving', 'Playa del Carmen Nightlife'],
+      scores: { budget:2,moderate:2,luxury:0,flex:2, tropical:3,med:1,cool:0,temp:0, beach:3,adventure:1,culture:1,food:2, solo:1,couple:1,family:3,friends:3, ocean:3,jungle:1,temples:1,volcanic:0 }
+    },
+    {
+      name: 'Santorini, Greece', tagline: 'The Most Beautiful Sunset on Earth',
+      description: 'Santorini is the dream made real — whitewashed villages draped along volcanic caldera cliffs, sapphire-domed churches, and sunsets that set the Aegean Sea ablaze. Sip crisp local wine, explore the caldera by boat, swim in geothermal springs, and wander the romantic cobblestone streets of Oia at golden hour.',
+      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&auto=format&fit=crop&q=85',
+      time: 'May – October', budget: 'Luxury', climate: 'Mediterranean',
+      highlights: ['Blue-Domed Churches of Oia', 'Caldera Sunset Views', 'Aegean Sea Boat Tour', 'Local Wine Tasting', 'Red & Black Sand Beaches', 'Fresh Seafood by the Harbor'],
+      scores: { budget:0,moderate:1,luxury:3,flex:2, tropical:0,med:3,cool:0,temp:1, beach:2,adventure:0,culture:3,food:1, solo:0,couple:3,family:0,friends:1, ocean:2,jungle:0,temples:2,volcanic:3 }
+    },
+    {
+      name: 'Iceland', tagline: 'Land of Fire, Ice & Northern Lights',
+      description: 'Iceland is unlike anywhere else on the planet — a raw, elemental landscape of geysers, glaciers, black lava fields, and the dancing aurora borealis. Drive the legendary Ring Road past cascading waterfalls, soak in the Blue Lagoon, and hike ancient glaciers. Iceland rewards the curious with experiences that feel genuinely otherworldly.',
+      image: 'https://images.unsplash.com/photo-1474690870753-1b92efa1f2d8?w=900&auto=format&fit=crop&q=85',
+      time: 'Jun–Aug (midnight sun) or Sep–Mar (aurora)', budget: 'Moderate to Luxury', climate: 'Cool & Dramatic',
+      highlights: ['Northern Lights Chasing', 'Blue Lagoon Geothermal Spa', 'Ring Road Road Trip', 'Glacier & Ice Cave Tours', 'Skógafoss Waterfall Hike', 'Whale Watching in Húsavík'],
+      scores: { budget:0,moderate:2,luxury:1,flex:2, tropical:0,med:0,cool:3,temp:1, beach:0,adventure:3,culture:1,food:0, solo:2,couple:2,family:0,friends:2, ocean:0,jungle:0,temples:0,volcanic:3 }
+    },
+    {
+      name: 'Tokyo, Japan', tagline: 'Where Ancient Tradition Meets the Future',
+      description: 'Tokyo is one of the most extraordinary cities on Earth — where centuries-old Shinto shrines stand beside neon-lit skyscrapers and every neighborhood reveals a new world. Eat your way through the planet\'s greatest food city, explore bamboo forests in Kyoto, and experience a culture of remarkable depth, precision, and beauty.',
+      image: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=900&auto=format&fit=crop&q=85',
+      time: 'March – May (cherry blossom) or October – November', budget: 'Moderate', climate: 'Temperate & Lush',
+      highlights: ['Cherry Blossoms at Ueno Park', 'Shibuya Crossing & Harajuku', 'Tsukiji Market Sushi', 'Senso-ji Temple in Asakusa', 'Kyoto Bamboo Grove Day Trip', 'Ramen & Izakaya Culture'],
+      scores: { budget:0,moderate:2,luxury:1,flex:2, tropical:0,med:1,cool:0,temp:3, beach:0,adventure:0,culture:3,food:3, solo:3,couple:1,family:1,friends:2, ocean:0,jungle:0,temples:3,volcanic:0 }
+    },
+    {
+      name: 'Fiji', tagline: 'Bula! The Warmest Welcome on Earth',
+      description: 'Fiji is paradise where the water is impossibly turquoise, the coral gardens are spectacular, and the people are among the warmest you will ever meet. Spread across 333 islands in the South Pacific, Fiji offers everything from secluded private resorts to authentic cultural village visits, world-class snorkeling, and the traditional kava ceremony.',
+      image: 'https://images.unsplash.com/photo-1602152533286-56c5a73afc7e?w=900&auto=format&fit=crop&q=85',
+      time: 'July – October', budget: 'Moderate to Luxury', climate: 'Tropical & Warm',
+      highlights: ['Yasawa & Mamanuca Island Hopping', 'Traditional Kava Ceremony', 'Great Astrolabe Reef Snorkeling', 'Private Island Resort Stays', 'Village Cultural Tours', 'Kayaking Crystal Lagoons'],
+      scores: { budget:0,moderate:1,luxury:3,flex:2, tropical:3,med:0,cool:0,temp:0, beach:3,adventure:1,culture:1,food:0, solo:0,couple:3,family:2,friends:1, ocean:3,jungle:1,temples:0,volcanic:0 }
+    }
+  ];
+
+  /* ══════════════════════════════════════
+     STATE
+  ══════════════════════════════════════ */
+  let currentQ = 0;
+  const answers = {};
+
+  /* ══════════════════════════════════════
+     HELPERS
+  ══════════════════════════════════════ */
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function startQuiz() {
+    currentQ = 0;
+    Object.keys(answers).forEach(k => delete answers[k]);
+    renderQuestion();
+    showScreen('screen-question');
+  }
+
+  function restartQuiz() {
+    showScreen('screen-welcome');
+  }
+
+  /* ══════════════════════════════════════
+     RENDER QUESTION
+  ══════════════════════════════════════ */
+  function renderQuestion() {
+    const q = questions[currentQ];
+    const pct = ((currentQ + 1) / questions.length) * 100;
+
+    document.getElementById('progress-count').textContent = `Question ${currentQ + 1} of ${questions.length}`;
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('q-icon').textContent = q.icon;
+    document.getElementById('q-text').textContent = q.text;
+    document.getElementById('q-sub').textContent = q.sub;
+
+    document.getElementById('btn-back').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
+
+    const btnNext = document.getElementById('btn-next');
+    btnNext.innerHTML = currentQ === questions.length - 1
+      ? 'Find My Destination <i class="fas fa-plane-departure"></i>'
+      : 'Next <i class="fas fa-arrow-right"></i>';
+    btnNext.classList.remove('enabled');
+
+    const grid = document.getElementById('options-grid');
+    grid.innerHTML = '';
+    q.options.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn' + (answers[currentQ] === opt.key ? ' selected' : '');
+      btn.innerHTML = `
+        <span class="option-icon">${opt.icon}</span>
+        <div>
+          <div class="option-label">${opt.label}</div>
+          <div class="option-desc">${opt.desc}</div>
+        </div>`;
+      btn.addEventListener('click', () => selectOption(opt.key, btn));
+      grid.appendChild(btn);
+    });
+
+    if (answers[currentQ]) btnNext.classList.add('enabled');
+  }
+
+  function selectOption(key, el) {
+    answers[currentQ] = key;
+    document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    document.getElementById('btn-next').classList.add('enabled');
+  }
+
+  function goBack() {
+    if (currentQ > 0) { currentQ--; renderQuestion(); }
+  }
+
+  function goNext() {
+    if (!answers[currentQ]) return;
+    if (currentQ < questions.length - 1) {
+      currentQ++;
+      renderQuestion();
+    } else {
+      calculateResult();
+    }
+  }
+
+  /* ══════════════════════════════════════
+     CALCULATE RESULT
+  ══════════════════════════════════════ */
+  function calculateResult() {
+    showScreen('screen-loading');
+    const msgs = [
+      'Analyzing your travel style...',
+      'Scanning 195 countries...',
+      'Checking beach conditions...',
+      'Consulting the compass...',
+      'Almost there — your perfect trip awaits!'
+    ];
+    let i = 0;
+    const el = document.getElementById('loading-text');
+    const interval = setInterval(() => { el.textContent = msgs[++i % msgs.length]; }, 550);
+
+    setTimeout(() => {
+      clearInterval(interval);
+      const scored = destinations.map(dest => ({
+        dest,
+        score: Object.values(answers).reduce((sum, key) => sum + (dest.scores[key] || 0), 0)
+      }));
+      scored.sort((a, b) => b.score - a.score || Math.random() - 0.5);
+      displayResult(scored[0].dest);
+    }, 2600);
+  }
+
+  /* ══════════════════════════════════════
+     DISPLAY RESULT
+  ══════════════════════════════════════ */
+  function displayResult(dest) {
+    document.getElementById('result-img').src = dest.image;
+    document.getElementById('result-img').alt = dest.name;
+    document.getElementById('result-name').textContent = dest.name;
+    document.getElementById('result-tagline').textContent = dest.tagline;
+    document.getElementById('result-desc').textContent = dest.description;
+    document.getElementById('result-time').textContent = 'Best: ' + dest.time;
+    document.getElementById('result-budget').textContent = dest.budget;
+    document.getElementById('result-climate').textContent = dest.climate;
+    document.getElementById('result-highlights').innerHTML =
+      dest.highlights.map(h => `<li><i class="fas fa-check-circle"></i>${h}</li>`).join('');
+    showScreen('screen-result');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Passion | Cambria Petty</title>
+  <!-- External stylesheet created from scratch — no Bootstrap -->
+  <link rel="stylesheet" href="travel.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body id="top">
+
+<!-- ══════════════════════════════════════════════════
+     NAVIGATION — links to all pages (from-scratch nav)
+════════════════════════════════════════════════════ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">Cambria Petty</a>
+    <div class="nav-links">
+      <!-- On-page anchors -->
+      <a href="#about">About</a>
+      <a href="#destinations">Destinations</a>
+      <a href="#video">Video</a>
+      <a href="#data">Data</a>
+      <a href="#tips">Tips</a>
+      <!-- Links to all other pages -->
+      <a href="index.html">Home</a>
+      <a href="resume.html">Resume</a>
+      <a href="travel.html" class="nav-active">Travel Passion</a>
+      <a href="travel-app.html" class="nav-app-link">Travel Advisor App</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════
+     HERO — div #1
+     Custom background image (set in travel.css)
+     On-page anchor target: #home
+════════════════════════════════════════════════════ -->
+<div class="hero-container" id="home">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">A Passion Page by Cambria Petty</p>
+    <h1>My Love for Travel</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Exploring the world one destination at a time &mdash; beaches, cultures, and unforgettable adventures.</p>
+    <a href="#about" class="hero-btn solid">Start Exploring</a>
+    <a href="travel-app.html" class="hero-btn outline">Find My Destination</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     ABOUT — div #2 | On-page anchor: #about
+════════════════════════════════════════════════════ -->
+<div class="content-section" id="about">
+  <p class="section-label">My Passion</p>
+  <h2 class="section-heading">Why I Love to Travel</h2>
+  <div class="heading-bar"></div>
+  <p class="intro-text">
+    For as long as I can remember, travel has been one of my greatest passions. There is something
+    profoundly transformative about stepping off a plane into a world that looks, sounds, smells, and
+    tastes completely different from home. Every trip teaches me something new — about a culture, about
+    myself, and about how extraordinary this planet truly is.
+  </p>
+  <p class="intro-text" style="margin-top: 18px;">
+    Whether sipping fresh coconut water on a white-sand beach, wandering through ancient temples in Bali,
+    or watching the sun melt into the Aegean Sea from a clifftop in Santorini — travel fills me with a
+    sense of wonder and gratitude that nothing else replicates. It is not just about the places; it is
+    about the stories, the people, and the perspective that each journey leaves behind.
+  </p>
+  <p class="intro-text" style="margin-top: 18px;">
+    Explore my favorite destinations below, then check out my
+    <a href="travel-app.html" style="color: #0d6e7a; font-weight: 700; text-decoration: none;">Travel Advisor App</a>
+    to discover where <em>you</em> should go next.
+  </p>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     DESTINATIONS — div #3 | On-page anchor: #destinations
+     Ordered list with nested unordered lists (requirement)
+════════════════════════════════════════════════════ -->
+<div style="background-color: #ffffff; padding: 1px 0;">
+  <div class="content-section" id="destinations">
+    <p class="section-label">Dream Destinations</p>
+    <h2 class="section-heading">My Top 5 Places to Visit</h2>
+    <div class="heading-bar"></div>
+    <p class="intro-text" style="margin-bottom: 32px;">
+      These are the destinations that have captured my heart — through experience or an irresistible pull
+      on my bucket list. Each one offers something uniquely unforgettable.
+    </p>
+
+    <!--
+      REQUIREMENT MET: Ordered list (<ol>) with nested unordered lists (<ul>) inside each item.
+    -->
+    <ol class="destinations-ordered">
+
+      <li>
+        Bali, Indonesia
+        <span class="dest-subtitle">The Island of the Gods — where culture, spirituality, and nature meet in perfect harmony.</span>
+        <ul class="highlights-list">
+          <li>Breathtaking rice terraces in Tegalalang and Jatiluwih</li>
+          <li>Ancient Hindu temples including Uluwatu at sunset and Tanah Lot</li>
+          <li>World-class surfing at Kuta and Canggu beaches</li>
+          <li>Vibrant arts markets and traditional Kecak dance in Ubud</li>
+          <li>Rich, flavorful cuisine — nasi goreng, satay, and tropical fruit</li>
+        </ul>
+      </li>
+
+      <li>
+        The Maldives
+        <span class="dest-subtitle">The world's most pristine overwater paradise — turquoise lagoons and endless sky.</span>
+        <ul class="highlights-list">
+          <li>Iconic overwater bungalows with glass floors and ocean access</li>
+          <li>Snorkeling and diving among vibrant coral reefs and manta rays</li>
+          <li>Bioluminescent plankton lighting up the shoreline at night</li>
+          <li>Secluded sandbar picnics at golden hour</li>
+          <li>Unrivaled sunsets over the Indian Ocean</li>
+        </ul>
+      </li>
+
+      <li>
+        Costa Rica
+        <span class="dest-subtitle">Pure Vida — a nature lover's paradise where rainforest meets Pacific shore.</span>
+        <ul class="highlights-list">
+          <li>Zip-lining through cloud forests in Monteverde</li>
+          <li>Spotting sloths, toucans, and howler monkeys in the wild</li>
+          <li>Surfing and sea turtle nesting at Tamarindo and Playa Grande</li>
+          <li>Soaking in natural hot springs near Arenal Volcano</li>
+          <li>Sustainable eco-lodges and farm-to-table cuisine</li>
+        </ul>
+      </li>
+
+      <li>
+        Santorini, Greece
+        <span class="dest-subtitle">Whitewashed walls, cobalt domes, and the most beautiful sunset on Earth.</span>
+        <ul class="highlights-list">
+          <li>Iconic blue-domed churches of Oia and Fira perched on the caldera cliffs</li>
+          <li>Sunset views over the Aegean Sea that stop time</li>
+          <li>Fresh seafood, local Assyrtiko wine, and mezze by the harbor</li>
+          <li>Red Beach and black volcanic sand beaches</li>
+          <li>Caldera boat tours and geothermal hot springs</li>
+        </ul>
+      </li>
+
+      <li>
+        Fiji
+        <span class="dest-subtitle">Bula! — the South Pacific haven of warm waters, coral gardens, and the world's warmest people.</span>
+        <ul class="highlights-list">
+          <li>Infectious Fijian hospitality — "Bula!" greets you everywhere</li>
+          <li>Crystal-clear Mamanuca and Yasawa Island lagoons</li>
+          <li>World-class snorkeling and diving in the Great Astrolabe Reef</li>
+          <li>Traditional kava ceremonies and authentic village visits</li>
+          <li>Secluded private island resorts surrounded by jungle and ocean</li>
+        </ul>
+      </li>
+
+    </ol>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     PHOTO GALLERY — Images from Unsplash (not Bootstrap)
+     On-page anchor: #gallery
+════════════════════════════════════════════════════ -->
+<div class="gallery-section" id="gallery">
+  <div class="gallery-inner">
+    <p class="section-label">Photography</p>
+    <h2 class="section-heading">A Glimpse of Paradise</h2>
+    <div class="heading-bar"></div>
+    <!-- All images sourced from Unsplash — not from Bootstrap theme -->
+    <div class="gallery-grid">
+      <img
+        src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&auto=format&fit=crop&q=85"
+        alt="Bali rice terraces with lush tropical greenery">
+      <img
+        src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&auto=format&fit=crop&q=85"
+        alt="Maldives overwater bungalows at sunset over turquoise water">
+      <img
+        src="https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=600&auto=format&fit=crop&q=85"
+        alt="Turquoise waters of a tropical Caribbean island">
+      <img
+        src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=600&auto=format&fit=crop&q=85"
+        alt="Santorini Greece whitewashed buildings with blue domes">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&auto=format&fit=crop&q=85"
+        alt="Tropical beach with clear water and golden sand">
+      <img
+        src="https://images.unsplash.com/photo-1602152533286-56c5a73afc7e?w=600&auto=format&fit=crop&q=85"
+        alt="Fiji crystal-clear waters with vibrant coral reef">
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     VIDEO SECTION — div #4 | On-page anchor: #video
+     Embedded YouTube video (requirement)
+     Note: YouTube embeds require online hosting to render.
+════════════════════════════════════════════════════ -->
+<div class="video-section" id="video">
+  <div class="video-inner">
+    <p class="section-label">Watch &amp; Explore</p>
+    <h2 class="section-heading">The World Is Beautiful</h2>
+    <div class="heading-bar" style="background:#c4963a; margin:14px auto 20px;"></div>
+    <p class="video-desc">
+      A stunning journey through some of the most breathtaking destinations on Earth.
+      Let this be the inspiration for your next great adventure.
+    </p>
+    <!--
+      REQUIREMENT MET: Embedded YouTube video.
+      This will not render when opened locally — it functions correctly once hosted online.
+      Replace the video ID (kz7OBTvJ_TE) in the src URL to use a different video.
+    -->
+    <iframe
+      src="https://www.youtube.com/embed/kz7OBTvJ_TE"
+      title="Beautiful Travel Destinations of the World"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TABLEAU SECTION — div #5 | On-page anchor: #data
+     Live & interactive Tableau visualization (requirement)
+     Replace the embed code with any viz from public.tableau.com
+════════════════════════════════════════════════════ -->
+<div class="tableau-section" id="data">
+  <div class="tableau-inner">
+    <p class="section-label">Travel Data</p>
+    <h2 class="section-heading">Global Tourism by the Numbers</h2>
+    <div class="heading-bar" style="margin:14px auto 20px;"></div>
+    <p class="tableau-desc">
+      Explore interactive data on international tourism arrivals and the world's most visited destinations.
+      This live visualization displays real global travel trends — hover, filter, and discover.
+    </p>
+
+    <div class="tableau-wrapper">
+      <!--
+        REQUIREMENT MET: Live and interactive Tableau visualization.
+        To use a different viz: visit public.tableau.com, open any visualization,
+        click Share > Embed Code, and replace the code below.
+      -->
+      <div class='tableauPlaceholder' id='viz_tourism' style='position: relative; width: 100%;'>
+        <noscript>
+          <a href='https://public.tableau.com/app/profile/ireneavraham/viz/GlobalTourism2019/GlobalTourism2019'>
+            <img alt='Global Tourism 2019'
+              src='https://public.tableau.com/static/images/Gl/GlobalTourism2019/GlobalTourism2019/1_rss.png'
+              style='border: none;' />
+          </a>
+        </noscript>
+        <object class='tableauViz' style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+          <param name='embed_code_version' value='3' />
+          <param name='site_root' value='' />
+          <param name='name' value='GlobalTourism2019/GlobalTourism2019' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='yes' />
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='language' value='en-US' />
+        </object>
+      </div>
+      <script type='text/javascript'>
+        var divElement = document.getElementById('viz_tourism');
+        var vizElement = divElement.getElementsByTagName('object')[0];
+        vizElement.style.width = '100%';
+        vizElement.style.height = (divElement.offsetWidth * 0.72) + 'px';
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);
+      </script>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     TIPS SECTION — On-page anchor: #tips
+════════════════════════════════════════════════════ -->
+<div class="tips-section" id="tips">
+  <div class="tips-inner">
+    <p class="section-label">Traveler's Wisdom</p>
+    <h2 class="section-heading">My Top Travel Tips</h2>
+    <div class="heading-bar"></div>
+    <p class="intro-text" style="margin-bottom: 0;">A few lessons learned — and a few I wish I'd known sooner.</p>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-passport"></i></span>
+        <h4>Pack Light, Pack Right</h4>
+        <p>Bring half the clothes you think you need and twice the versatility. A carry-on is always enough if you plan well.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-utensils"></i></span>
+        <h4>Eat Where Locals Eat</h4>
+        <p>Skip the tourist-facing restaurants. The best meals come from market stalls, family-run spots, and neighborhood gems.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-map-marked-alt"></i></span>
+        <h4>Leave Room to Wander</h4>
+        <p>Don't over-plan. Some of the best travel memories come from spontaneous detours and unplanned conversations.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-language"></i></span>
+        <h4>Learn a Few Words</h4>
+        <p>Hello, thank you, and please in the local language can open doors and warm hearts everywhere you go.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-sun"></i></span>
+        <h4>Travel Off-Season</h4>
+        <p>Fewer crowds, lower prices, and often better weather than expected. Shoulder season is a traveler's secret weapon.</p>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon"><i class="fas fa-camera"></i></span>
+        <h4>Be Present First</h4>
+        <p>Take the photo — then put the phone down. Some moments are better stored in memory than on a camera roll.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     FOOTER — links to all pages including professional pages
+════════════════════════════════════════════════════ -->
+<footer class="site-footer">
+  <p class="footer-name">Cambria Petty</p>
+  <p class="footer-sub">Accounting Student &bull; World Traveler &bull; BYU Marriott School of Business</p>
+
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="resume.html">Resume</a>
+    <a href="travel.html">Travel Passion</a>
+    <a href="travel-app.html">Travel Advisor App</a>
+    <a href="https://www.linkedin.com/in/cambria-petty-873559394" target="_blank">LinkedIn</a>
+    <a href="mailto:cpetty1@byu.edu">cpetty1@byu.edu</a>
+  </div>
+
+  <p class="footer-copy">&copy; 2025 Cambria Petty. All rights reserved.</p>
+  <a href="#top" class="btn-back-top">&#8679; Back to Top</a>
+</footer>
+
+</body>
+</html>
